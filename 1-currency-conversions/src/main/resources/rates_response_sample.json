@@ -1,0 +1,27 @@
+{
+  "base_currency": "EUR",
+  "meta": {
+    "effective_params": {
+      "date": "2016-08-04",
+      "quote_currencies": [
+        "GBP",
+        "UAH",
+        "USD"
+      ]
+    }
+  },
+  "quotes": {
+    "GBP": {
+      "date": "2016-08-03T21:00:00+0000",
+      "midpoint": "0.839810"
+    },
+    "UAH": {
+      "date": "2016-08-03T21:00:00+0000",
+      "midpoint": "27.7411"
+    },
+    "USD": {
+      "date": "2016-08-03T21:00:00+0000",
+      "midpoint": "1.11940"
+    }
+  }
+}
