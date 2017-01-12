@@ -1,6 +1,6 @@
 package se.tain.service;
 
-import org.springframework.http.ResponseEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.tain.model.CurrencyRates;
 
@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class CurrencyRatesService {
 
@@ -19,11 +20,13 @@ public class CurrencyRatesService {
     private Map<String, CurrencyRates> latestRates = new HashMap<>();
 
     public void save(CurrencyRates currencyRates) {
+        log.debug("Save currency rates for base currency [{}]", currencyRates.getBaseCurrency());
         latestRates.put(currencyRates.getBaseCurrency(), currencyRates);
         processMissingCurrencyRates(currencyRates);
     }
 
     public CurrencyRates find(String baseCurrency) {
+        log.debug("Find currency rates for base currency [{}]", baseCurrency);
         CurrencyRates currencyRates = latestRates.get(baseCurrency);
         if (currencyRates != null) {
             currencyRates = currencyRates.copy();
@@ -32,6 +35,7 @@ public class CurrencyRatesService {
     }
 
     public CurrencyRates find(String sourceCurrency, String targetCurrency) {
+        log.debug("Find currency rate from source currency [{}] to target currency [{}]", sourceCurrency, targetCurrency);
         CurrencyRates currencyRates = find(sourceCurrency);
         if (currencyRates == null
                 || !currencyRates.getMeta().getParams().getQuoteCurrencies().contains(targetCurrency)

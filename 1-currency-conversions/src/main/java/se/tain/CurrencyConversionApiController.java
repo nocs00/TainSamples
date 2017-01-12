@@ -21,7 +21,7 @@ public class CurrencyConversionApiController {
     @PostMapping("/upload")
     public ResponseEntity<String> uploadCurrencyRates(
             @RequestParam MultipartFile file
-    ) throws Exception {
+    ) {
         try {
             byte[] bytes = file.getBytes();
             ObjectMapper mapper = new ObjectMapper();

@@ -1,0 +1,17 @@
+{
+  "base_currency": "PLN",
+  "meta": {
+    "effective_params": {
+      "date": "2016-08-04",
+      "quote_currencies": [
+        "UAH"
+      ]
+    }
+  },
+  "quotes": {
+    "UAH": {
+      "date": "2016-08-03T21:00:00+0000",
+      "midpoint": "6.6493"
+    }
+  }
+}
