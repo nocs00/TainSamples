@@ -1,5 +1,6 @@
 package se.tain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,6 +12,11 @@ public class Hand {
     }
 
     public static Hand valueOf( String initialHandString ) {
-        return new Hand( Collections.emptyList() );
+        int cardsCnt = initialHandString.length() / 2;
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < cardsCnt; i++) {
+            cards.add(Card.valueOf(initialHandString.substring(i * 2, i * 2 + 2)));
+        }
+        return new Hand( cards );
     }
 }

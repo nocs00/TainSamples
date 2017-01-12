@@ -1,6 +1,7 @@
 package se.tain;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -8,13 +9,16 @@ import static java.util.Arrays.asList;
 
 public class PokerTable {
     public static void main( String[] args ) {
-        Scanner consoleInput = new Scanner( System.in );
-        Stream<String> consoleInputDealerStream = Stream.generate( consoleInput::nextLine );
+        Queue<String> cardsToDraw = Deck.newDeck();
+
+//        Scanner consoleInput = new Scanner( System.in );
+//        Stream<String> consoleInputDealerStream = Stream.generate( consoleInput::nextLine );
 
         PokerTable testTable = new PokerTable();
 
         testTable.deal(
-                consoleInputDealerStream,
+//                consoleInputDealerStream,
+                cardsToDraw.stream(),
                 asList( new Player( "pedro", "2CAH" ), new Player( "john", "2D2S" ) )
         ).forEach( System.out::println );
     }
@@ -30,8 +34,11 @@ public class PokerTable {
         return dealerCardsStream.map( card -> getWinners( card, players ) );
     }
 
+    private static int turnNumber = 1;
     private static List<Player> getWinners( String inputCard, List<Player> players ) {
-        System.out.printf( "Card dealt: %s%n", inputCard );
+        System.out.printf("Turn %d\t", turnNumber++);
+        System.out.printf( "Card dealt: %s\t", inputCard );
+        System.out.print("Winners: ");
         return players;
     }
 }
