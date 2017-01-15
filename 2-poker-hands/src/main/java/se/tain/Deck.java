@@ -3,12 +3,10 @@ package se.tain;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class Deck {
     private static final int DECK_SIZE = 52;
@@ -32,8 +30,11 @@ public class Deck {
         return cards.poll();
     }
 
-    public static Queue<String> newDeck() {
-        Deck deck = new Deck();
-        return deck.cards;
+    public static Deck newDeck() {
+        return new Deck();
+    }
+
+    public Stream stream() {
+        return cards.stream();
     }
 }
